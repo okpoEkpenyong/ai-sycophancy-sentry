@@ -1,0 +1,14 @@
+﻿streamlit
+groq
+openai
+pandas
+numpy
+plotly
+python-dotenv
+azure-ai-contentsafety
+azure-core
+anthropic
+uuid
+scipy
+sentence_transformers
+openrouter

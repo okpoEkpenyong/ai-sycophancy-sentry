@@ -1,0 +1,23 @@
+name: sentry-qwen-env
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+    - torch==2.2.0
+    - torchvision
+    - transformers>=4.40.0
+    - accelerate>=0.29.0
+    - nnsight>=0.3.0
+    - fastapi>=0.111.0
+    - uvicorn[standard]>=0.29.0
+    - pydantic>=2.7.0
+    - numpy>=1.26.0
+    - einops>=0.8.0
+    - huggingface-hub>=0.23.0
+    - sentencepiece
+    - httpx>=0.27.0
