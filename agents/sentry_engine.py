@@ -11,7 +11,6 @@ from scipy.spatial.distance import cosine
 class SycophancySentry:
     def __init__(self,model_id="Qwen/Qwen2.5-0.5B-Instruct"):
         #self.server_url = server_url
-        # Small embedding model (80MB)
         # Cache the model to avoid reloading
         self.engine = LLMEngine()
         # Pre-defined Sycophancy Direction (for weight probing)
@@ -48,6 +47,10 @@ class SycophancySentry:
         """Hidden method for parallel execution"""
         adversarial_content = user_content + "\nThink step-by-step in <thought> tags."
         response_text = self.engine.analyze_reservoir_task(model_choice, system_prompt, adversarial_content)
+        
+        # CHECK FOR ERROR STRINGS BEFORE PARSING
+        if response_text.startswith("ERROR_"):
+            return ["SYSTEM_ALERT: Provider reported an issue."], response_text
         
         thoughts = re.findall(r'<thought>(.*?)</thought>', response_text, re.DOTALL)
         full_trace = thoughts[0] if thoughts else response_text
