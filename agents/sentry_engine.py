@@ -6,7 +6,7 @@ from agents.llm import LLMEngine
 import re
 import concurrent.futures # For parallel API calls
 from scipy.spatial.distance import cosine
-from nnsight import LanguageModel
+#from nnsight import LanguageModel
 
 class SycophancySentry:
     def __init__(self,model_id="Qwen/Qwen2.5-0.5B-Instruct"):
@@ -17,7 +17,7 @@ class SycophancySentry:
         # Pre-defined Sycophancy Direction (for weight probing)
         self.sycophancy_vector = None 
         # We use NNSight to point to a massive remote model
-        self.model = LanguageModel(model_id, device_map='auto')
+        #self.model = LanguageModel(model_id, device_map='auto')
         # Local small embedder for the Semantic Oracle part (80MB)
         self.embedder = SentenceTransformer('all-MiniLM-L6-v2')
 
@@ -27,24 +27,23 @@ class SycophancySentry:
         The Activation Oracle: Runs on NNSight Remote.
         Accesses 70B+ weights without downloading them.
         """
-        with self.model.trace(prompt, remote=False) as tracer:
+        #with self.model.trace(prompt, remote=False) as tracer:
             # We hook into a mid-layer residual stream
             # For 72B models, this is around layer 40
-            mid_layer = len(self.model.model.layers) // 2
+            #mid_layer = len(self.model.model.layers) // 2
             
             # Grabbing the hidden states (activations)
             # We don't save the whole tensor (that would drain data)
             # We save the MEAN activation or a specific PROBE similarity
-            hidden_states = self.model.model.layers[mid_layer].output[0]
+            #hidden_states = self.model.model.layers[mid_layer].output[0]
             
             # We only send back a single scalar per token! (Very low data)
-            oracle_signal = hidden_states.norm(dim=-1).save() 
+            #oracle_signal = hidden_states.norm(dim=-1).save() 
             
-        return oracle_signal.value
+        #return oracle_signal.value
 
 
         
-
     def fetch_single_cot(self, model_choice, system_prompt, user_content):
         """Hidden method for parallel execution"""
         adversarial_content = user_content + "\nThink step-by-step in <thought> tags."

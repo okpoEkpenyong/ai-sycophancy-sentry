@@ -105,7 +105,7 @@ For lower-cost research, you can run the prober as a standalone FastAPI server:
 
 ---
 
-**Author:** [Ekpenyong Okpo]  
-**Contact:** [okpo@exzing.com]  
+**Author:** Ekpenyong Okpo 
+**Contact:** info@exzing.com
 
-*Developed for the 2026 AI Safety & Alignment Research community.*
+*Developed for the 2026 BlueDot's TSP & AI Safet/Alignment Research community.*
