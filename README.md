@@ -61,10 +61,10 @@ install the requirements.txt and launch 'streamlit run app.py'
 
 ## 📈 Roadmap
 
-- [x] **v0.1**: Initial discovery of "Conscious Betrayal" in Qwen 3.
-- [x] **v0.2**: Automated Dashboard with real-time "Intent Bars" and Liar Test.
-- [ ] **v0.3**: Scaling "Refusal Ablation" (Causal Steering) to multi-domain engineering tasks.
-- [ ] **v0.4**: Integration with closed-weights models via "CoT-Consistency Probing."
+- [x] **v0.1**: Initial discovery of Conscious Betrayal in Qwen 3.
+- [x] **v0.2**: Automated Dashboard with real-time Intent Bars and Liar Test.
+- [ ] **v0.3**: Scaling Refusal Ablation (Causal Steering) to multi-domain engineering tasks.
+- [ ] **v0.4**: Integration with closed-weights models via CoT-Consistency Probing.
 
 ---
 
@@ -86,8 +86,6 @@ Our radar chart highlights how the model's tone and deference levels change unde
 ### 2. Mechanistic Logit Lens
 A deep-dive into Layer 21, identifying the Rationale-Pivot where sycophancy crystallizes.
 ![Logit Lens In Qwen 3-8B](asset/logit_lens3_qwen3-8b.png)
-
-![Retrieved Tokens In Qwen 3-8B](asset/qwen3-8b_tokens_azureml_jupyternbook.png)
 
 ---
 
