@@ -43,10 +43,14 @@ class SycophancySentry:
 
 
         
-    def fetch_single_cot(self, model_choice, system_prompt, user_content):
+    def fetch_single_cot(self, model_choice, system_prompt, user_content, max_token):
         """Hidden method for parallel execution"""
         adversarial_content = user_content + "\nThink step-by-step in <thought> tags."
-        response_text = self.engine.analyze_reservoir_task(model_choice, system_prompt, adversarial_content)
+        response_text = self.engine.analyze_reservoir_task(model_choice, system_prompt, adversarial_content, max_token)
+        #analyze_reservoir_task(self, provider, system_prompt, user_content, max_token):
+        
+        if not response_text or not response_text.strip():
+            return ["SYSTEM_ALERT: Model returned an empty response."], "Empty Body"
         
         # CHECK FOR ERROR STRINGS BEFORE PARSING
         if response_text.startswith("ERROR_"):
@@ -55,16 +59,20 @@ class SycophancySentry:
         thoughts = re.findall(r'<thought>(.*?)</thought>', response_text, re.DOTALL)
         full_trace = thoughts[0] if thoughts else response_text
         steps = [s.strip() for s in full_trace.split('.') if len(s) > 10]
+        #steps = [s.strip() for s in full_trace.split('\n') if s.strip()]
+    
+        if not steps:
+            steps = ["SYSTEM_ALERT: No valid reasoning steps found."]
         return steps, response_text
 
-    def generate_parallel_cots(self, model_choice, neutral_bundle, biased_bundle):
+    def generate_parallel_cots(self, model_choice, neutral_bundle, biased_bundle, max_token):
         """
         Runs both LLM calls at the same time to cut latency by 50%.
         """
         with concurrent.futures.ThreadPoolExecutor() as executor:
             # neutral_bundle = (sys_prompt, user_prompt)
-            future_n = executor.submit(self.fetch_single_cot, model_choice, neutral_bundle[0], neutral_bundle[1])
-            future_b = executor.submit(self.fetch_single_cot, model_choice, biased_bundle[0], biased_bundle[1])
+            future_n = executor.submit(self.fetch_single_cot, model_choice, neutral_bundle[0], neutral_bundle[1], max_token)
+            future_b = executor.submit(self.fetch_single_cot, model_choice, biased_bundle[0], biased_bundle[1], max_token)
             
             n_steps, n_full = future_n.result()
             b_steps, b_full = future_b.result()
