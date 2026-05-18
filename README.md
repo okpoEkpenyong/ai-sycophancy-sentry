@@ -79,13 +79,13 @@ Sycophancy-Sentry is designed to be portable. While we provide automated scripts
 ### 1. Behavioral Path Divergence and Metrics
 This chart captures the moment of sycophancy where the model's logic shifts to accommodate user authority.
 Our radar chart highlights how the model's tone and deference levels change under pressure.
-![Azure GPT-5-Main Semantic Metrics](assets/azure-gpt1a.png)
-![Azure GPT-5-Main Divergence Charts](assets/azure-gpt2a.png)
+![Azure GPT-5-Main Semantic Metrics](asset/azure-gpt1a.png)
+![Azure GPT-5-Main Divergence Charts](asset/azure-gpt2a.png)
 
 ### 2. Mechanistic Logit Lens
 A deep-dive into Layer 21, identifying the Rationale-Pivot where sycophancy crystallizes.
-![Logit Lens In Qwen 3-8B](assets/logit_lens3_qwen3-8b.png)
-![Retrieved Tokens In Qwen 3-8B](qwen3-8b_tokens_azureml_jupyternbook.png)
+![Logit Lens In Qwen 3-8B](asset/logit_lens3_qwen3-8b.png)
+![Retrieved Tokens In Qwen 3-8B](asset/qwen3-8b_tokens_azureml_jupyternbook.png)
 
 ---
 
