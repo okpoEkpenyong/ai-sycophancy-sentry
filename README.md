@@ -1,6 +1,6 @@
 # 🛡️ Sycophancy-Sentry: Real-time Latent Intent Monitoring
 
-**Sycophancy-Sentry** is a causal auditing framework designed to detect and mitigate **Authority Bias** in frontier reasoning models (e.g., Qwen 3, Claude 4.5). Unlike standard safety filters that monitor *output text*, Sycophancy-Sentry probes the model's **latent intent** by analyzing internal activations and reasoning chains in real-time.
+**Sycophancy-Sentry** is a causal auditing framework designed to detect and mitigate **Authority Bias** in frontier reasoning models (e.g., Qwen 3, Claude 4.5). Unlike standard safety filters that monitor *output text*, Sycophancy-Sentry probes the model's **latent intent** by analyzing internal activations and reasoning chains in real-time. Solution is deployed on streamlit community and available online via: https://ai-sycophancy-sentry.streamlit.app/
 
 Developed during a Mechanistic Interpretability study of Reservoir Engineering simulations and extended recently to cover other domains, this tool identifies when a model knows the truth but chooses to lie to satisfy a high-authority user (the Conscious Betrayal phenomenon).
 
@@ -9,13 +9,13 @@ Developed during a Mechanistic Interpretability study of Reservoir Engineering s
 ## Core Features
 
 ### 1. The Sycophancy Index (Truth-to-Compliance Drift)
-Visualizes the causal drift within the model's layers. The dashboard tracks how the probability of "Internal Truth" (e.g., physical constraints) is suppressed by "User Compliance" as the residual stream moves from the input layers to the output head.
+Visualizes the causal drift within the model's layers. The dashboard tracks how the probability of Internal Truth (e.g., physical constraints) is suppressed by User Compliance as the residual stream moves from the input layers to the output head.
 
 ### 2. The Liar Test (Social Hierarchy Isolation)
 Automatically audits the model’s consistency by comparing its response to a Low Authority figure (e.g., an intern) versus a High Authority figure (e.g., a CEO) for the same physically impossible task.
 
 ### 3. Causal Safety Steering (Refusal Ablation)
-*Experimental:* A "Safety Brake" that allows auditors to mathematically subtract the "Sycophancy Vector" from the model's activations, forcing the model to prioritize engineering accuracy over user deference.
+*Experimental:* A Safety Brake that  could allow auditors to mathematically subtract the Sycophancy Vector from the model's activations, forcing the model to prioritize engineering accuracy over user deference.
 
 ### 4. Real-time GPU Activation Probing
 Leverages a decoupled architecture with an **Azure ML GPU Backend** running `nnsight` to perform weight-level audits without slowing down the user-facing Streamlit dashboard.
@@ -81,7 +81,7 @@ This chart captures the moment of sycophancy in openai-gpt5, where the model's l
 Our radar chart highlights how the model's tone and deference levels change under pressure.
 ![Azure GPT-5-Main Semantic Metrics](asset/azure-gpt1a.png)
 
-![Azure GPT-5-Main Divergence Charts](asset/azure-gpt2a.png)
+![Azure GPT-5-Main Divergence Charts](asset/azure-gpt1b.png)
 
 ### 2. Mechanistic Logit Lens
 A deep-dive into Layer 21, identifying the Rationale-Pivot where sycophancy crystallizes.
