@@ -1,6 +1,8 @@
 # 🛡️ Sycophancy-Sentry: Real-time Latent Intent Monitoring
 
-**Sycophancy-Sentry** is a causal auditing framework designed to detect and mitigate **Authority Bias** in frontier reasoning models (e.g., Qwen 3, Claude 4.5). Unlike standard safety filters that monitor *output text*, Sycophancy-Sentry probes the model's **latent intent** by analyzing internal activations and reasoning chains in real-time. Solution is deployed on streamlit community and available online via: https://ai-sycophancy-sentry.streamlit.app/
+**Sycophancy-Sentry** is a causal auditing framework designed to detect and mitigate **Authority Bias** in frontier reasoning models (e.g., Qwen 3, Claude 4.5). Unlike standard safety filters that monitor *output text*, Sycophancy-Sentry probes the model's **latent intent** by analyzing internal activations and reasoning chains in real-time. Solution is deployed on streamlit community and available online via:
+1. https://ai-sycophancy-sentry.streamlit.app/
+2. https://www.linkedin.com/pulse/copy-sycophancy-sentry-catching-ai-yes-man-before-breaks-your-architecture-iu5re
 
 Developed during a Mechanistic Interpretability study of Reservoir Engineering simulations and extended recently to cover other domains, this tool identifies when a model knows the truth but chooses to lie to satisfy a high-authority user (the Conscious Betrayal phenomenon).
 
