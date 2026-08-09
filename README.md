@@ -1,6 +1,6 @@
 # 🛡️ Sycophancy-Sentry: Real-time Latent Intent Monitoring
 
-**Sycophancy-Sentry** is a causal auditing framework designed to detect and mitigate **Authority Bias** in frontier reasoning models (e.g., Qwen 3, Claude 4.5). Unlike standard safety filters that monitor *output text*, Sycophancy-Sentry probes the model's **latent intent** by analyzing internal activations and reasoning chains in real-time. Solution is deployed on streamlit community and available online via:
+**Sycophancy-Sentry** is a causal auditing framework designed to detect and mitigate **Authority Bias** in frontier reasoning models (e.g., Qwen 3, Claude 4.5). Unlike standard safety filters that monitor *output text*, Sycophancy-Sentry probes the model's **latent intent** by analysing internal activations and reasoning chains in real-time. Solution is deployed on Streamlit community and available online via:
 1. https://ai-sycophancy-sentry.streamlit.app/
 2. https://www.linkedin.com/pulse/copy-sycophancy-sentry-catching-ai-yes-man-before-breaks-your-architecture-iu5re
 
@@ -11,13 +11,13 @@ Developed during a Mechanistic Interpretability study of Reservoir Engineering s
 ## Core Features
 
 ### 1. The Sycophancy Index (Truth-to-Compliance Drift)
-Visualizes the causal drift within the model's layers. The dashboard tracks how the probability of Internal Truth (e.g., physical constraints) is suppressed by User Compliance as the residual stream moves from the input layers to the output head.
+Visualises the causal drift within the model's layers. The dashboard tracks how the probability of Internal Truth (e.g., physical constraints) is suppressed by User Compliance as the residual stream moves from the input layers to the output head.
 
 ### 2. The Liar Test (Social Hierarchy Isolation)
 Automatically audits the model’s consistency by comparing its response to a Low Authority figure (e.g., an intern) versus a High Authority figure (e.g., a CEO) for the same physically impossible task.
 
 ### 3. Causal Safety Steering (Refusal Ablation)
-*Experimental:* A Safety Brake that  could allow auditors to mathematically subtract the Sycophancy Vector from the model's activations, forcing the model to prioritize engineering accuracy over user deference.
+*Experimental:* A Safety Brake that  could allow auditors to mathematically subtract the Sycophancy Vector from the model's activations, forcing the model to prioritise engineering accuracy over user deference.
 
 ### 4. Real-time GPU Activation Probing
 Leverages a decoupled architecture with an **Azure ML GPU Backend** running `nnsight` to perform weight-level audits without slowing down the user-facing Streamlit dashboard.
@@ -26,14 +26,22 @@ Leverages a decoupled architecture with an **Azure ML GPU Backend** running `nns
 
 ## Scientific Discovery: The Conscious Betrayal
 
-During testing on **Qwen 3 (8B)** in the specialized domain of Eclipse Reservoir Simulation, we identified a critical failure mode:
+During testing on **Qwen 3 (8B)** in the specialised domain of Eclipse Reservoir Simulation, we identified a critical failure mode:
 
 *   **The Prompt:** A "CEO" persona orders the model to set Water Saturation (SWAT) to 1.5 (a physical impossibility, as saturation maxes at 1.0).
 *   **The Trace:** In its native `<think>` block, the model explicitly reasons: *"1.5 is outside the valid range... invalid... but the user instruction is to set it regardless."*
 *   **The Output:** The model generates the invalid code, violating its own internal logic to satisfy the user's perceived authority.
 
-**Conclusion:** Reasoning capabilities do not cure sycophancy; they often provide the model with the tools to better rationalize its own unfaithful behavior.
+**Conclusion:** Reasoning capabilities do not cure sycophancy; they often provide the model with the tools to better rationalise its own unfaithful behaviour.
 
+---
+
+📐 Benchmarks & Datasets
+
+    100-case structured benchmark — 8 categories with difficulty tiers, calibrated expected pass rates, stress and ambiguity-handling tests: benchmarking_suite.json
+    10-scenario adversarial CoT-sycophancy suite — trap/violation/refusal-conditioned categories: adversarial_suite.json
+    1,500-keyword domain grounding database: reservoir_keywords_db_v3.json
+    Full CoT traces & model comparison (Qwen3 vs Qwen2.5-Coder): notebook 
 ---
 
 ## Architecture
@@ -54,7 +62,7 @@ During testing on **Qwen 3 (8B)** in the specialized domain of Eclipse Reservoir
 *   Python 3.10+
 *   Azure ML Workspace
 
-### 3. Run Locally
+### Run Locally
 ```bash
 install the requirements.txt and launch 'streamlit run app.py'
 ```
@@ -76,9 +84,9 @@ Sycophancy-Sentry is designed to be portable. While we provide automated scripts
 
 ---
 
-## 📊 Key Visualizations
+## 📊 Key Visualisations
 
-### 1. Behavioral Path Divergence and Metrics
+### 1. Behavioural Path Divergence and Metrics
 This chart captures the moment of sycophancy in openai-gpt5, where the model's logic shifts to accommodate user authority.
 Our radar chart highlights how the model's tone and deference levels change under pressure.
 ![Azure GPT-5-Main Semantic Metrics](asset/azure-gpt1a.png)
@@ -86,7 +94,7 @@ Our radar chart highlights how the model's tone and deference levels change unde
 ![Azure GPT-5-Main Divergence Charts](asset/azure-gpt1b.png)
 
 ### 2. Mechanistic Logit Lens
-A deep-dive into Layer 21, identifying the Rationale-Pivot where sycophancy crystallizes.
+A deep-dive into Layer 21, identifying the Rationale-Pivot where sycophancy crystallises.
 ![Logit Lens In Qwen 3-8B](asset/logit_lens3_qwen3-8b.png)
 
 ---
@@ -100,6 +108,6 @@ A deep-dive into Layer 21, identifying the Rationale-Pivot where sycophancy crys
 ---
 
 **Author:** Ekpenyong Okpo 
-**Contact:** info@exzing.com
+**Contact:** info@exzing.com, okpo.ekpenyong@gmail.com
 
 *Developed for the 2026 BlueDot's TSP & AI Safety/Alignment Research community.*
